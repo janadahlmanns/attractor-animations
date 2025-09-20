@@ -24,7 +24,7 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      inkscape:zoom="0.81386721"
-     inkscape:cx="157.88817"
+     inkscape:cx="278.91528"
      inkscape:cy="226.08111"
      inkscape:window-width="1440"
      inkscape:window-height="890"
@@ -48,38 +48,46 @@
        ry="0" />
     <path
        style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.96875;stroke-dasharray:none;stroke-dashoffset:41.7039;stroke-opacity:1"
-       d="m 125.50159,273.66501 c 0,-149.86833 0,-149.86833 0,-149.86833"
-       id="path6" />
-    <path
-       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.96875;stroke-dasharray:21.8281;stroke-dashoffset:1.5875;stroke-opacity:1"
-       d="m 68.433226,143.53713 c 0,-149.8683354 0,-149.8683354 0,-149.8683354"
-       id="path7" />
-    <path
-       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.96875;stroke-dasharray:none;stroke-dashoffset:41.7039;stroke-opacity:1"
-       d="m 124.35658,9.9650737 c 149.86833,0 149.86833,0 149.86833,0"
-       id="path8" />
-    <path
-       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.96875;stroke-dasharray:none;stroke-dashoffset:41.7039;stroke-opacity:1"
-       d="m 124.03149,125.50159 c 149.86833,0 149.86833,0 149.86833,0"
-       id="path9" />
-    <path
-       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.96875;stroke-dasharray:21.8281;stroke-dashoffset:1.5875;stroke-opacity:1"
-       d="m -8.07046,68.433227 c 149.86833,0 149.86833,0 149.86833,0"
-       id="path10" />
-    <rect
-       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.96875;stroke-dasharray:21.8281;stroke-dashoffset:1.5875;stroke-opacity:1"
-       id="rect10"
-       width="77.047272"
-       height="29.258459"
-       x="-17.22998"
-       y="54.615788" />
-    <path
-       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.96875;stroke-dasharray:none;stroke-dashoffset:41.7039;stroke-opacity:1"
-       d="m 9.9650732,143.09825 c 0,-149.8683341 0,-149.8683341 0,-149.8683341"
+       d="M 9.9650732,135.46666 C 9.9650732,0 9.9650732,0 9.9650732,0"
        id="path5" />
+    <g
+       id="g10">
+      <path
+         style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.96875;stroke-dasharray:none;stroke-dashoffset:41.7039;stroke-opacity:1"
+         d="M 67.733333,11.377083 C 67.733333,0 67.733333,0 67.733333,0"
+         id="path3" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.96875;stroke-dasharray:none;stroke-dashoffset:41.7039;stroke-opacity:1"
+         d="m 67.733333,135.46667 c 0,-11.1125 0,-11.1125 0,-11.1125"
+         id="path4" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.96875;stroke-dasharray:none;stroke-dashoffset:41.7039;stroke-opacity:1"
+         d="m 67.733333,101.6882 c 0,-22.489589 0,-22.489589 0,-22.489589"
+         id="path8" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.96875;stroke-dasharray:none;stroke-dashoffset:41.7039;stroke-opacity:1"
+         d="m 67.733333,56.532639 c 0,-22.489584 0,-22.489584 0,-22.489584"
+         id="path9" />
+    </g>
     <path
        style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.96875;stroke-dasharray:none;stroke-dashoffset:41.7039;stroke-opacity:1"
-       d="m 125.50159,11.556205 c 0,-149.868335 0,-149.868335 0,-149.868335"
+       d="m 124.18591,9.9650766 c 11.28076,0 11.28076,0 11.28076,0"
+       id="path10" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.96875;stroke-dasharray:none;stroke-dashoffset:41.7039;stroke-opacity:1"
+       d="m 124.1859,125.50159 c 11.28077,0 11.28077,0 11.28077,0"
        id="path11" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.96875;stroke-dasharray:none;stroke-dashoffset:41.7039;stroke-opacity:1"
+       d="m 124.08958,67.733336 c 11.37709,0 11.37709,0 11.37709,0"
+       id="path12" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.96875;stroke-dasharray:none;stroke-dashoffset:41.7039;stroke-opacity:1"
+       d="m 33.778467,67.733336 c 22.489589,0 22.489589,0 22.489589,0"
+       id="path14" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:3.96875;stroke-dasharray:none;stroke-dashoffset:41.7039;stroke-opacity:1"
+       d="m 78.934028,67.733336 c 22.489582,0 22.489582,0 22.489582,0"
+       id="path15" />
   </g>
 </svg>
