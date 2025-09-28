@@ -32,7 +32,7 @@ class Traffic(MovingCameraScene):
         [[6, -4, 1], [7, -4, 1], [0, 0, 1], [1, -1, 1]],
         [[6, -5, 1], [20, -4, 1], [0, 20, 1], [0, -1, 1]],
         [[6, -20, 1], [20, -4, 1], [0, 20, 1], [0, -2, 1]],
-        [[6, -20, 1], [20, -4, 1], [0, 20, 1], [-5, -2, 1]],
+        [[6, -20, 1], [20, -4, 1], [0, 20, 1], [-20, -2, 1]],
         ]
 
         # --- CAMERA SETTINGS ---
@@ -78,30 +78,30 @@ class Traffic(MovingCameraScene):
 
         state_text = Text("State", font_size=36)
 
-        x_val_green = Text(f"{init_green_state[0]:.0f}", font_size=36)
-        y_val_green = Text(f"{init_green_state[1]:.0f}", font_size=36)
-        v_val_green = Text(f"{init_green_state[2]:.0f}", font_size=36)
+        x_val_green = Text(" - ", font_size=36) if max(abs(i) for i in init_green_state) > 9 else Text(f"{init_green_state[0]:.0f}", font_size=36)
+        y_val_green = Text(" - ", font_size=36) if max(abs(i) for i in init_green_state) > 9 else Text(f"{init_green_state[1]:.0f}", font_size=36)
+        v_val_green = Text(" - ", font_size=36) if max(abs(i) for i in init_green_state) > 9 else Text(f"{init_green_state[2]:.0f}", font_size=36)
         x_line_green = VGroup(Text("Green car X =", font_size=36), x_val_green).arrange(RIGHT, buff=0.2)
         y_line_green = VGroup(Text("Green car Y =", font_size=36), y_val_green).arrange(RIGHT, buff=0.2)
         v_line_green = VGroup(Text("Green car V =", font_size=36), v_val_green).arrange(RIGHT, buff=0.2)
 
-        x_val_orange = Text(f"{init_orange_state[0]:.0f}", font_size=36)
-        y_val_orange = Text(f"{init_orange_state[1]:.0f}", font_size=36)
-        v_val_orange = Text(f"{init_orange_state[2]:.0f}", font_size=36)
+        x_val_orange = Text(" - ", font_size=36) if max(abs(i) for i in init_orange_state) > 9 else Text(f"{init_orange_state[0]:.0f}", font_size=36)
+        y_val_orange = Text(" - ", font_size=36) if max(abs(i) for i in init_orange_state) > 9 else Text(f"{init_orange_state[1]:.0f}", font_size=36)
+        v_val_orange = Text(" - ", font_size=36) if max(abs(i) for i in init_orange_state) > 9 else Text(f"{init_orange_state[2]:.0f}", font_size=36)
         x_line_orange = VGroup(Text("Orange car X =", font_size=36), x_val_orange).arrange(RIGHT, buff=0.2)
         y_line_orange = VGroup(Text("Orange car Y =", font_size=36), y_val_orange).arrange(RIGHT, buff=0.2)
         v_line_orange = VGroup(Text("Orange car V =", font_size=36), v_val_orange).arrange(RIGHT, buff=0.2)
 
-        x_val_blue = Text(f"{init_blue_state[0]:.0f}", font_size=36)
-        y_val_blue = Text(f"{init_blue_state[1]:.0f}", font_size=36)
-        v_val_blue = Text(f"{init_blue_state[2]:.0f}", font_size=36)
+        x_val_blue = Text(" - ", font_size=36) if max(abs(i) for i in init_blue_state) > 9 else Text(f"{init_blue_state[0]:.0f}", font_size=36)
+        y_val_blue = Text(" - ", font_size=36) if max(abs(i) for i in init_blue_state) > 9 else Text(f"{init_blue_state[1]:.0f}", font_size=36)
+        v_val_blue = Text(" - ", font_size=36) if max(abs(i) for i in init_blue_state) > 9 else Text(f"{init_blue_state[2]:.0f}", font_size=36)
         x_line_blue = VGroup(Text("Blue car X =", font_size=36), x_val_blue).arrange(RIGHT, buff=0.2)
         y_line_blue = VGroup(Text("Blue car Y =", font_size=36), y_val_blue).arrange(RIGHT, buff=0.2)
         v_line_blue = VGroup(Text("Blue car V =", font_size=36), v_val_blue).arrange(RIGHT, buff=0.2)
 
-        x_val_yellow = Text(f"{init_yellow_state[0]:.0f}", font_size=36)
-        y_val_yellow = Text(f"{init_yellow_state[1]:.0f}", font_size=36)
-        v_val_yellow = Text(f"{init_yellow_state[2]:.0f}", font_size=36)
+        x_val_yellow = Text(" - ", font_size=36) if max(abs(i) for i in init_yellow_state) > 9 else Text(f"{init_yellow_state[0]:.0f}", font_size=36)
+        y_val_yellow = Text(" - ", font_size=36) if max(abs(i) for i in init_yellow_state) > 9 else Text(f"{init_yellow_state[1]:.0f}", font_size=36)
+        v_val_yellow = Text(" - ", font_size=36) if max(abs(i) for i in init_yellow_state) > 9 else Text(f"{init_yellow_state[2]:.0f}", font_size=36)
         x_line_yellow = VGroup(Text("Yellow car X =", font_size=36), x_val_yellow).arrange(RIGHT, buff=0.2)
         y_line_yellow = VGroup(Text("Yellow car Y =", font_size=36), y_val_yellow).arrange(RIGHT, buff=0.2)
         v_line_yellow = VGroup(Text("Yellow car V =", font_size=36), v_val_yellow).arrange(RIGHT, buff=0.2)
@@ -139,19 +139,17 @@ class Traffic(MovingCameraScene):
             )
 
             # Update text 
-            x_val_green.become(Text(f"{x_green:.0f}", font_size=36).move_to(x_val_green.get_center()))
-            y_val_green.become(Text(f"{y_green:.0f}", font_size=36).move_to(y_val_green.get_center()))
-            v_val_green.become(Text(f"{v_green:.0f}", font_size=36).move_to(v_val_green.get_center()))
-            x_val_orange.become(Text(f"{x_orange:.0f}", font_size=36).move_to(x_val_orange.get_center()))
-            y_val_orange.become(Text(f"{y_orange:.0f}", font_size=36).move_to(y_val_orange.get_center()))
-            v_val_orange.become(Text(f"{v_orange:.0f}", font_size=36).move_to(v_val_orange.get_center()))
-            x_val_blue.become(Text(f"{x_blue:.0f}", font_size=36).move_to(x_val_blue.get_center()))
-            y_val_blue.become(Text(f"{y_blue:.0f}", font_size=36).move_to(y_val_blue.get_center()))
-            v_val_blue.become(Text(f"{v_blue:.0f}", font_size=36).move_to(v_val_blue.get_center()))
-            x_val_yellow.become(Text(f"{x_yellow:.0f}", font_size=36).move_to(x_val_yellow.get_center()))
-            y_val_yellow.become(Text(f"{y_yellow:.0f}", font_size=36).move_to(y_val_yellow.get_center()))
-            v_val_yellow.become(Text(f"{v_yellow:.0f}", font_size=36).move_to(v_val_yellow.get_center()))
+            x_val_green.become(Text(" - ", font_size=36).move_to(x_val_green.get_center())) if max(abs(i) for i in green_state) > 9 else x_val_green.become(Text(f"{x_green:.0f}", font_size=36).move_to(x_val_green.get_center()))
+            y_val_green.become(Text(" - ", font_size=36).move_to(y_val_green.get_center())) if max(abs(i) for i in green_state) > 9 else y_val_green.become(Text(f"{y_green:.0f}", font_size=36).move_to(y_val_green.get_center()))
+            v_val_green.become(Text(" - ", font_size=36).move_to(v_val_green.get_center())) if max(abs(i) for i in green_state) > 9 else v_val_green.become(Text(f"{v_green:.0f}", font_size=36).move_to(v_val_green.get_center()))
+            x_val_orange.become(Text(" - ", font_size=36).move_to(x_val_orange.get_center())) if max(abs(i) for i in orange_state) > 9 else x_val_orange.become(Text(f"{x_orange:.0f}", font_size=36).move_to(x_val_orange.get_center()))
+            y_val_orange.become(Text(" - ", font_size=36).move_to(y_val_orange.get_center())) if max(abs(i) for i in orange_state) > 9 else y_val_orange.become(Text(f"{y_orange:.0f}", font_size=36).move_to(y_val_orange.get_center()))
+            v_val_orange.become(Text(" - ", font_size=36).move_to(v_val_orange.get_center())) if max(abs(i) for i in orange_state) > 9 else v_val_orange.become(Text(f"{v_orange:.0f}", font_size=36).move_to(v_val_orange.get_center()))
+            x_val_blue.become(Text(" - ", font_size=36).move_to(x_val_blue.get_center())) if max(abs(i) for i in blue_state) > 9 else x_val_blue.become(Text(f"{x_blue:.0f}", font_size=36).move_to(x_val_blue.get_center()))
+            y_val_blue.become(Text(" - ", font_size=36).move_to(y_val_blue.get_center())) if max(abs(i) for i in blue_state) > 9 else y_val_blue.become(Text(f"{y_blue:.0f}", font_size=36).move_to(y_val_blue.get_center()))
+            v_val_blue.become(Text(" - ", font_size=36).move_to(v_val_blue.get_center())) if max(abs(i) for i in blue_state) > 9 else v_val_blue.become(Text(f"{v_blue:.0f}", font_size=36).move_to(v_val_blue.get_center()))
+            x_val_yellow.become(Text(" - ", font_size=36).move_to(x_val_yellow.get_center())) if max(abs(i) for i in yellow_state) > 9 else x_val_yellow.become(Text(f"{x_yellow:.0f}", font_size=36).move_to(x_val_yellow.get_center()))
+            y_val_yellow.become(Text(" - ", font_size=36).move_to(y_val_yellow.get_center())) if max(abs(i) for i in yellow_state) > 9 else y_val_yellow.become(Text(f"{y_yellow:.0f}", font_size=36).move_to(y_val_yellow.get_center()))
+            v_val_yellow.become(Text(" - ", font_size=36).move_to(v_val_yellow.get_center())) if max(abs(i) for i in yellow_state) > 9 else v_val_yellow.become(Text(f"{v_yellow:.0f}", font_size=36).move_to(v_val_yellow.get_center()))
 
-            self.wait(0.2)
-
-        self.wait(2)
+        self.wait(1)
