@@ -4,14 +4,6 @@ __pycache__/
 *.egg-info/
 .venv/
 
-# Manim
-media/
-*.log
-*.tex
-*.dvi
-*.aux
-*.out
-
 # VS Code
 .vscode/
 
