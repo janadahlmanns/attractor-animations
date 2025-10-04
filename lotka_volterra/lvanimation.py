@@ -25,7 +25,8 @@ def lotka_volterra(t_max=60, dt=0.1,
 class LVAnimation(MovingCameraScene):
     def construct(self):
         # setup camera
-        self.camera.frame.scale(1.6)  # zoom out 
+        self.camera.frame.scale(1.3)  # zoom out 
+        self.camera.frame.move_to(LEFT * 2)  # equivalent
 
         # simulate data
         t, R, F = lotka_volterra()
@@ -125,7 +126,28 @@ class LVAnimation(MovingCameraScene):
         fox_curve = VMobject(color="#E69F00").set_z_index(2)
         self.add(rabbit_curve, fox_curve)
 
-        for t_current in range(1,len(t)): # advance time
+        # State box
+        box_width = 3
+        box_height = 3
+        box = Rectangle(height=box_height, width=box_width, stroke_color=WHITE, fill_opacity=0)
+        box.move_to([5.5,0,0])
+
+        state_text = Text("State:", font_size=36)
+        rabbits_value = Text("-", font_size = 36)
+        foxes_value = Text("-", font_size=36)
+        rabbits_line = VGroup(Text("Rabbits =", font_size=36), rabbits_value).arrange(RIGHT, buff=0.4)
+        foxes_line = VGroup(Text("Foxes =", font_size=36), foxes_value).arrange(RIGHT, buff=0.4)
+        box_text = VGroup(state_text, rabbits_line, foxes_line).arrange(DOWN, buff=0.3)
+        box_text.scale_to_fit_width(box_width * 0.75)
+        box_text.move_to(box.get_center())
+
+        self.add(box, box_text)
+
+        # ADVANCE TIME IN LOOP 
+        for t_current in range(1,len(t)): 
+            rabbits_value.become(Text(f"{R[t_current]:.1f}", font_size=36).move_to(rabbits_value.get_center()))
+            foxes_value.become(Text(f"{F[t_current]:.1f}", font_size=36).move_to(foxes_value.get_center()))
+                               
             # rabbit curve
             rabbit_curve.become(axes.plot_line_graph(
                 x_values=t[:t_current], y_values=R[:t_current],
@@ -161,6 +183,6 @@ class LVAnimation(MovingCameraScene):
             for f, fox in enumerate(foxes):
                 fox.set_opacity(fox_opacities[f])
 
-            self.wait(0.1)
+            self.wait(0.03)
 
         self.wait(2)
