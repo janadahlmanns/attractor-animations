@@ -1,0 +1,7 @@
+ffmpeg -i LVAnimation.mp4 -vf "fps=25,scale=540:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 lvanimation.gif
+
+ manim -pql -r 1080,1080 --fps 50 lotka_volterra/lvanimation.py LVAnimation
+
+ manim -pql lotka_volterra/lvanimation.py LVAnimation
+
+ 
