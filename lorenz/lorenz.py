@@ -15,7 +15,7 @@ class Lorenz(ThreeDScene):
         sigma, rho, beta = 10, 28, 8/3
         t_span = (0, 30)             # total time span
         t_eval = np.linspace(*t_span, 2000)  # time steps for smoothness, 5000 is pretty smooth
-        ball_runtime = 30
+        ball_runtime = 60
 
         # Two slightly different initial conditions
         init1 = [1.0, 1.0, 1.0]
@@ -29,14 +29,14 @@ class Lorenz(ThreeDScene):
 
         # --- 3D Axes ---
         axes = ThreeDAxes(
-            x_range=[-50, 50, 5],
-            y_range=[-50, 50, 5],
-            z_range=[-50, 50, 5],
-            x_length=10, y_length=10, z_length=10
+            x_range=[-50, 50, 10],
+            y_range=[-50, 50, 10],
+            z_range=[-10, 50, 10],
+            x_length=10, y_length=10, z_length=6
         )
         axes.add(axes.get_axis_labels(x_label="x", y_label="y", z_label="z"))
         self.add(axes)
-        self.set_camera_orientation(phi=60 * DEGREES, theta=-60 * DEGREES, zoom=0.8)
+        self.set_camera_orientation(phi=60 * DEGREES, theta=15 * DEGREES, zoom=0.8, frame_center=[0, 0, 1])
 
 
 
@@ -45,9 +45,9 @@ class Lorenz(ThreeDScene):
         points1 = [axes.c2p(x, y, z) for x, y, z in zip(*sol1.y)]
         points2 = [axes.c2p(x, y, z) for x, y, z in zip(*sol2.y)]
         # draw curves
-        full_curve1 = VMobject(color=BLUE, stroke_opacity=1)
+        full_curve1 = VMobject(color=BLUE, stroke_width=1)
         full_curve1.set_points_as_corners(points1)
-        full_curve2 = VMobject(color=ORANGE, stroke_opacity=1)
+        full_curve2 = VMobject(color=ORANGE, stroke_width=1)
         full_curve2.set_points_as_corners(points2)
         # add curves
         self.add(full_curve1, full_curve2)
@@ -57,9 +57,9 @@ class Lorenz(ThreeDScene):
         dot2 = Dot3D(points2[0], color=ORANGE)
 
         # --- Trails (actual paths traced) ---
-        trail1 = VMobject(color=BLUE)
+        trail1 = VMobject(color="#0E4058")
         trail1.set_points_as_corners([points1[0]])
-        trail2 = VMobject(color=ORANGE)
+        trail2 = VMobject(color="#E79E16")
         trail2.set_points_as_corners([points2[0]])
 
         self.add(dot1, dot2, trail1, trail2)

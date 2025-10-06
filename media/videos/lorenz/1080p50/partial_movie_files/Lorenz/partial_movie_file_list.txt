@@ -1,0 +1,4 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/janad/OneDrive/Desktop/work_hard/EmergenceNotes/attractor-animations/media/videos/lorenz/1080p50/partial_movie_files/Lorenz/3771568911_4052660874_891186784.mp4'
+file 'file:C:/Users/janad/OneDrive/Desktop/work_hard/EmergenceNotes/attractor-animations/media/videos/lorenz/1080p50/partial_movie_files/Lorenz/963650875_2185751855_401348312.mp4'
+file 'file:C:/Users/janad/OneDrive/Desktop/work_hard/EmergenceNotes/attractor-animations/media/videos/lorenz/1080p50/partial_movie_files/Lorenz/3164034576_2232573245_624925186.mp4'
