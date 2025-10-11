@@ -17,5 +17,3 @@ ffmpeg -i LVAnimation.mp4 -vf "fps=25,scale=540:-1:flags=lanczos,split[s0][s1];[
  light gray #757575
  lightest gray #C3C3C3
  white #FFFFFF
-
- Github connection test
