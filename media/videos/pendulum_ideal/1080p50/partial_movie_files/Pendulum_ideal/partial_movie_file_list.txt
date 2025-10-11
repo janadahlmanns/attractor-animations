@@ -1,2 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:C:/Users/janad/OneDrive/Desktop/work_hard/EmergenceNotes/attractor-animations/media/videos/pendulum_ideal/1080p50/partial_movie_files/Pendulum_ideal/3781968319_117374335_3339197335.mp4'
