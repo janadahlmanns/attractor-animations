@@ -67,29 +67,27 @@ class Lorenz(ThreeDScene):
 
         # --- HUD State box ---
 
-        def get_ball1_values(): # read position
-            # placeholder for now
-            return dot1.get_center()
-
-        # Updater that only updates every n frames
-        def update_ball1_x_text(mob, dt):
-            value = get_ball1_values()[0]
+        # Updater for the coordinate texts
+        def update_ball1_dim_text(mob, dt, dim):
+            value = dot1.get_center()[dim]
             new_text = f"{value:.1f}"
             if mob.text != new_text:
-                mob.text = new_text
+                mob.set_text = new_text
                 mob.become(Text(new_text, font_size=60).move_to(mob.get_center()))
 
-
-
+        # Actual box
         box_height = 3.0
-        box_width = 3.5
+        box_width = 4.5
         box = Rectangle(height=box_height, width=box_width, stroke_color=WHITE, fill_opacity=0
             ).shift(RIGHT * 5, RIGHT)
         state_text = Text("State:")
-        ball1_x_value = Text(f"{get_ball1_values()[0]:.1f}", font_size=60)
-        ball1_x_value.add_updater(update_ball1_x_text)
+        ball1_x_value = Text(f"{dot1.get_center()[0]:.3f}", font_size=60)
+        ball1_x_value.add_updater(lambda mob, dt: update_ball1_dim_text(mob, dt, 0))
         ball1_x__line = VGroup(Text("x1 = ", font_size=60), ball1_x_value).arrange(RIGHT)
-        box_text = VGroup(state_text, ball1_x__line).arrange(DOWN, buff=0.4)
+        ball1_y_value = Text(f"{dot1.get_center()[1]:.3f}", font_size=60)
+        ball1_y_value.add_updater(lambda mob, dt: update_ball1_dim_text(mob, dt, 1))
+        ball1_y_line = VGroup(Text("y1 = ", font_size=60), ball1_y_value).arrange(RIGHT)
+        box_text = VGroup(state_text, ball1_x__line, ball1_y_line).arrange(DOWN, buff=0.4)
         box_text.move_to(box.get_center())
 
         self.add_fixed_in_frame_mobjects(box, box_text)
