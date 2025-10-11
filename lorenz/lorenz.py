@@ -13,8 +13,8 @@ class Lorenz(ThreeDScene):
     def construct(self):
         # --- Simulation parameters ---
         sigma, rho, beta = 10, 28, 8/3
-        t_span = (0, 1)             # total time span, use 30 for final version
-        t_eval = np.linspace(*t_span, 50)  # time steps for smoothness, use 2000 for final version
+        t_span = (0, 30)             # total time span, use 30 for final version
+        t_eval = np.linspace(*t_span, 2000)  # time steps for smoothness, use 2000 for final version
         ball_runtime = 60
 
         # Two slightly different initial conditions
@@ -36,7 +36,7 @@ class Lorenz(ThreeDScene):
         )
         axes.add(axes.get_axis_labels(x_label="x", y_label="y", z_label="z"))
         self.add(axes)
-        self.set_camera_orientation(phi=60 * DEGREES, theta=15 * DEGREES, zoom=0.8, frame_center=[2, 0, 1])
+        self.set_camera_orientation(phi=60 * DEGREES, theta=15 * DEGREES, zoom=0.675, frame_center=[0, 0, -0.5])
 
 
 
@@ -64,7 +64,6 @@ class Lorenz(ThreeDScene):
 
         self.add(dot1, dot2, trail1, trail2)
 
-
         # --- HUD State box ---
 
         # Updater for the coordinate texts
@@ -73,21 +72,35 @@ class Lorenz(ThreeDScene):
             new_text = f"{value:.1f}"
             if mob.text != new_text:
                 mob.set_text = new_text
-                mob.become(Text(new_text, font_size=60).move_to(mob.get_center()))
+                mob.become(Text(new_text, font_size=25, color = "#0E4058").move_to(mob.get_center()))
+        def update_ball2_dim_text(mob, dt, dim):
+            value = dot2.get_center()[dim]
+            new_text = f"{value:.1f}"
+            if mob.text != new_text:
+                mob.set_text = new_text
+                mob.become(Text(new_text, font_size=25, color = "#E79E16").move_to(mob.get_center()))
 
         # Actual box
-        box_height = 3.0
-        box_width = 4.5
+        box_height = 1.5
+        box_width = 7
         box = Rectangle(height=box_height, width=box_width, stroke_color=WHITE, fill_opacity=0
-            ).shift(RIGHT * 5, RIGHT)
-        state_text = Text("State:")
-        ball1_x_value = Text(f"{dot1.get_center()[0]:.3f}", font_size=60)
+            ).shift(3*DOWN)
+        state_text = Text("State:", font_size=25)
+        ball1_x_value = Text(f"{dot1.get_center()[0]:.3f}", font_size=25, color = "#0E4058")
         ball1_x_value.add_updater(lambda mob, dt: update_ball1_dim_text(mob, dt, 0))
-        ball1_x__line = VGroup(Text("x1 = ", font_size=60), ball1_x_value).arrange(RIGHT)
-        ball1_y_value = Text(f"{dot1.get_center()[1]:.3f}", font_size=60)
+        ball1_y_value = Text(f"{dot1.get_center()[1]:.3f}", font_size=25, color = "#0E4058")
         ball1_y_value.add_updater(lambda mob, dt: update_ball1_dim_text(mob, dt, 1))
-        ball1_y_line = VGroup(Text("y1 = ", font_size=60), ball1_y_value).arrange(RIGHT)
-        box_text = VGroup(state_text, ball1_x__line, ball1_y_line).arrange(DOWN, buff=0.4)
+        ball1_z_value = Text(f"{dot1.get_center()[2]:.3f}", font_size=25, color = "#0E4058")
+        ball1_z_value.add_updater(lambda mob, dt: update_ball1_dim_text(mob, dt, 2))
+        ball1_line = VGroup(Text("x1 = ", font_size=25), ball1_x_value, Text("y1 = ", font_size=25), ball1_y_value, Text("z1 = ", font_size=25), ball1_z_value).arrange(RIGHT)
+        ball2_x_value = Text(f"{dot2.get_center()[0]:.3f}", font_size=25, color = "#E79E16")
+        ball2_x_value.add_updater(lambda mob, dt: update_ball2_dim_text(mob, dt, 0))
+        ball2_y_value = Text(f"{dot2.get_center()[1]:.3f}", font_size=25, color = "#E79E16")
+        ball2_y_value.add_updater(lambda mob, dt: update_ball2_dim_text(mob, dt, 1))
+        ball2_z_value = Text(f"{dot2.get_center()[2]:.3f}", font_size=25, color = "#E79E16")
+        ball2_z_value.add_updater(lambda mob, dt: update_ball2_dim_text(mob, dt, 2))
+        ball2_line = VGroup(Text("x2 = ", font_size=25), ball2_x_value, Text("y2 = ", font_size=25), ball2_y_value, Text("z2 = ", font_size=25), ball2_z_value).arrange(RIGHT)
+        box_text = VGroup(state_text, ball1_line, ball2_line).arrange(DOWN, buff=0.2)
         box_text.move_to(box.get_center())
 
         self.add_fixed_in_frame_mobjects(box, box_text)
