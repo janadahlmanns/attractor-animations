@@ -13,8 +13,8 @@ class Lorenz(ThreeDScene):
     def construct(self):
         # --- Simulation parameters ---
         sigma, rho, beta = 10, 28, 8/3
-        t_span = (0, 30)             # total time span
-        t_eval = np.linspace(*t_span, 2000)  # time steps for smoothness, 5000 is pretty smooth
+        t_span = (0, 1)             # total time span, use 30 for final version
+        t_eval = np.linspace(*t_span, 50)  # time steps for smoothness, use 2000 for final version
         ball_runtime = 60
 
         # Two slightly different initial conditions
@@ -75,4 +75,3 @@ class Lorenz(ThreeDScene):
         )
 
         self.wait(2)
-
