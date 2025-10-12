@@ -36,7 +36,7 @@ class Lorenz(ThreeDScene):
         )
         axes.add(axes.get_axis_labels(x_label="x", y_label="y", z_label="z"))
         self.add(axes)
-        self.set_camera_orientation(phi=60 * DEGREES, theta=15 * DEGREES, zoom=0.675, frame_center=[0, 0, -0.5])
+        self.set_camera_orientation(phi=60 * DEGREES, theta=15 * DEGREES, zoom=1, frame_center=[0, 0, -0.5])
 
 
 
@@ -45,9 +45,9 @@ class Lorenz(ThreeDScene):
         points1 = [axes.c2p(x, y, z) for x, y, z in zip(*sol1.y)]
         points2 = [axes.c2p(x, y, z) for x, y, z in zip(*sol2.y)]
         # draw curves
-        full_curve1 = VMobject(color=BLUE, stroke_width=1)
+        full_curve1 = VMobject(color="#577F8D", stroke_width=1)
         full_curve1.set_points_as_corners(points1)
-        full_curve2 = VMobject(color=ORANGE, stroke_width=1)
+        full_curve2 = VMobject(color="#E79E16", stroke_width=1)
         full_curve2.set_points_as_corners(points2)
         # add curves
         self.add(full_curve1, full_curve2)
@@ -57,7 +57,7 @@ class Lorenz(ThreeDScene):
         dot2 = Dot3D(points2[0], color=ORANGE)
 
         # --- Trails (actual paths traced) ---
-        trail1 = VMobject(color="#0E4058")
+        trail1 = VMobject(color="#577F8D")
         trail1.set_points_as_corners([points1[0]])
         trail2 = VMobject(color="#E79E16")
         trail2.set_points_as_corners([points2[0]])
@@ -72,7 +72,7 @@ class Lorenz(ThreeDScene):
             new_text = f"{value:.1f}"
             if mob.text != new_text:
                 mob.set_text = new_text
-                mob.become(Text(new_text, font_size=25, color = "#0E4058").move_to(mob.get_center()))
+                mob.become(Text(new_text, font_size=25, color = "#577F8D").move_to(mob.get_center()))
         def update_ball2_dim_text(mob, dt, dim):
             value = dot2.get_center()[dim]
             new_text = f"{value:.1f}"
@@ -84,13 +84,13 @@ class Lorenz(ThreeDScene):
         box_height = 1.5
         box_width = 7
         box = Rectangle(height=box_height, width=box_width, stroke_color=WHITE, fill_opacity=0
-            ).shift(3*DOWN)
+            ).shift(4*DOWN)
         state_text = Text("State:", font_size=25)
-        ball1_x_value = Text(f"{dot1.get_center()[0]:.3f}", font_size=25, color = "#0E4058")
+        ball1_x_value = Text(f"{dot1.get_center()[0]:.3f}", font_size=25, color = "#577F8D")
         ball1_x_value.add_updater(lambda mob, dt: update_ball1_dim_text(mob, dt, 0))
-        ball1_y_value = Text(f"{dot1.get_center()[1]:.3f}", font_size=25, color = "#0E4058")
+        ball1_y_value = Text(f"{dot1.get_center()[1]:.3f}", font_size=25, color = "#577F8D")
         ball1_y_value.add_updater(lambda mob, dt: update_ball1_dim_text(mob, dt, 1))
-        ball1_z_value = Text(f"{dot1.get_center()[2]:.3f}", font_size=25, color = "#0E4058")
+        ball1_z_value = Text(f"{dot1.get_center()[2]:.3f}", font_size=25, color = "#577F8D")
         ball1_z_value.add_updater(lambda mob, dt: update_ball1_dim_text(mob, dt, 2))
         ball1_line = VGroup(Text("x1 = ", font_size=25), ball1_x_value, Text("y1 = ", font_size=25), ball1_y_value, Text("z1 = ", font_size=25), ball1_z_value).arrange(RIGHT)
         ball2_x_value = Text(f"{dot2.get_center()[0]:.3f}", font_size=25, color = "#E79E16")
@@ -106,8 +106,8 @@ class Lorenz(ThreeDScene):
         self.add_fixed_in_frame_mobjects(box, box_text)
 
         # --- Animate the two trajectories ---
-        self.begin_ambient_camera_rotation(rate=-(2*PI/(ball_runtime+2.5))) # rotate camera during the animation
-        self.wait(0.5) # to trigger rotation start
+        self.begin_ambient_camera_rotation(rate=-(2*PI/(ball_runtime+4))) # rotate camera during the animation
+        self.wait(2) # to trigger rotation start
         self.play(
             MoveAlongPath(dot1, full_curve1),
             MoveAlongPath(dot2, full_curve2),
