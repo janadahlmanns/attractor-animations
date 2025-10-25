@@ -122,7 +122,7 @@ class LVAnimation(MovingCameraScene):
         self.add(forest_panel)
 
         # Create initial plot curves
-        rabbit_curve = VMobject(color="#0072B2").set_z_index(2)
+        rabbit_curve = VMobject(color="#757575").set_z_index(2)
         fox_curve = VMobject(color="#E69F00").set_z_index(2)
         self.add(rabbit_curve, fox_curve)
 
@@ -151,7 +151,7 @@ class LVAnimation(MovingCameraScene):
             # rabbit curve
             rabbit_curve.become(axes.plot_line_graph(
                 x_values=t[:t_current], y_values=R[:t_current],
-                line_color="#0072B2",
+                line_color="#757575",
                 add_vertex_dots=False
             ).set_z_index(2))
 

@@ -15,7 +15,7 @@ class Lorenz(ThreeDScene):
         sigma, rho, beta = 10, 28, 8/3
         t_span = (0, 30)             # total time span, use 30 for final version
         t_eval = np.linspace(*t_span, 2000)  # time steps for smoothness, use 2000 for final version
-        ball_runtime = 60
+        ball_runtime = 45 # use 60 for final version
 
         # Two slightly different initial conditions
         init1 = [1.0, 1.0, 1.0]
@@ -45,9 +45,9 @@ class Lorenz(ThreeDScene):
         points1 = [axes.c2p(x, y, z) for x, y, z in zip(*sol1.y)]
         points2 = [axes.c2p(x, y, z) for x, y, z in zip(*sol2.y)]
         # draw curves
-        full_curve1 = VMobject(color="#577F8D", stroke_width=1)
+        full_curve1 = VMobject(color="#577F8D", stroke_width=1.5)
         full_curve1.set_points_as_corners(points1)
-        full_curve2 = VMobject(color="#E79E16", stroke_width=1)
+        full_curve2 = VMobject(color="#E79E16", stroke_width=1.5)
         full_curve2.set_points_as_corners(points2)
         # add curves
         self.add(full_curve1, full_curve2)
